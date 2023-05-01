@@ -1,0 +1,2 @@
+# Cypress-Scouts
+ Cypress basics
