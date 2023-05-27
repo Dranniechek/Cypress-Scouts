@@ -4,28 +4,39 @@ describe('Basic functionality', () => {
         const timestamp = Date.now();
         const randomNumber = Math.floor(Math.random() * timestamp);
 
+        // open website
         cy.visit('https://www.demoblaze.com')
 
+        // Click on "Sign up"
         cy.get('#signin2').click()
         
+        // Fill in username and password
         cy.get('#sign-username').type('Testuser' + randomNumber.toString())
         cy.get('#sign-password').type('Passwordtest')
 
-        cy.get('#signInModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary').click()
+        //  Click "Sign up" button
+        cy.xpath("//button[@type='button' and @onclick='register()']").click()
         
     })
     
     it('Purchase of one item', () => {
 
+        // open website
         cy.visit('https://www.demoblaze.com')
 
-        cy.get(':nth-child(1) > .card > :nth-child(1) > .card-img-top').click()
+        // Open first product
+        cy.xpath('//a[@href="prod.html?idp_=1" and @class="hrefch"]').click()
 
-        cy.get('.col-sm-12 > .btn').click()
+        //Click add to cart
+        cy.xpath('//a[contains(@class, "btn-success")]').click()
 
+        // Open Cart
         cy.get('#cartur').click()
-        cy.get('.col-lg-1 > .btn').click()
 
+        // Click "Place Order"
+        cy.xpath('//*[contains(@class, "btn-success")]').click()
+
+        // Fill in all fields on the page
         cy.get('#name').type('Testuser')
         cy.get('#country').type('TestCountry')
         cy.get('#city').type('Testcity')
@@ -33,9 +44,11 @@ describe('Basic functionality', () => {
         cy.get('#month').type('May')
         cy.get('#year').type('2023')
 
-        cy.get('#orderModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary').click()
+        // Click "Purchase" button
+        cy.xpath('//*[contains(@onclick, "purchaseOrder")]').click()
 
-        cy.get('.confirm').click()
+        // Click "Ok" button
+        cy.xpath('//button[contains(@class, "confirm")]').click()
 
     })
 
