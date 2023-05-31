@@ -1,28 +1,28 @@
 describe('Basic functionality', () => {
-    // it('Create new user', () => {
+    it('Create new user', () => {
         
-    //     const timestamp = Date.now();
-    //     const randomNumber = Math.floor(Math.random() * timestamp);
+        const timestamp = Date.now();
+        const randomNumber = Math.floor(Math.random() * timestamp);
 
-    //     // open website
-    //     cy.visit('https://www.demoblaze.com')
+        // open website
+        cy.visit('https://www.demoblaze.com')
 
-    //     // Click on "Sign up"
-    //     cy.get('#signin2').click()
+        // Click on "Sign up"
+        cy.get('#signin2').click()
         
-    //     // Fill in username and password
-    //     cy.get('#sign-username').type('Testuser' + randomNumber.toString())
-    //     cy.get('#sign-password').type('Passwordtest')
+        // Fill in username and password
+        cy.get('#sign-username').type('Testuser' + randomNumber.toString())
+        cy.get('#sign-password').type('Passwordtest')
 
-    //     // check that text "Sign up successful." appeared 
-    //     cy.window().then((win) => {
-    //         cy.stub(win, 'alert').as('winAlert')
-    //         //  Click "Sign up" button
-    //         cy.xpath("//button[@type='button' and @onclick='register()']").click()
-    //         cy.get('@winAlert').should('be.calledWith', 'Sign up successful.')
-    //       })
+        // check that text "Sign up successful." appeared 
+        cy.window().then((win) => {
+            cy.stub(win, 'alert').as('winAlert')
+            //  Click "Sign up" button
+            cy.xpath("//button[@type='button' and @onclick='register()']").click()
+            cy.get('@winAlert').should('be.calledWith', 'Sign up successful.')
+          })
         
-    // })
+    })
     
     it('Purchase of one item', () => {
 
