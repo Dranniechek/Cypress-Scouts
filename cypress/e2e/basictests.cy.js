@@ -59,12 +59,12 @@ describe('Basic functionality', () => {
         cy.xpath('//*[contains(@class, "sa-placeholder")]').should('be.visible')
 
         // Click "Ok" button
-        cy.xpath('//button[contains(@class, "confirm")]').click()
-       // cy.get('body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button').click()
-       // cy.contains('.confirm', 'OK').click();
+        cy.wait(1000)
+        cy.get('button.confirm').click()
+       
 
         // check if main page open after purchase
-        //cy.url().should('include', 'index.html')
+        cy.url().should('include', 'index.html')
 
     })
 
