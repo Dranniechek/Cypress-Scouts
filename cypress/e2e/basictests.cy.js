@@ -2,7 +2,7 @@ describe('Basic functionality', () => {
     it('Create new user', () => {
         
         const timestamp = Date.now();
-        const randomNumber = Math.floor(Math.random() * timestamp);
+        //const randomNumber = Math.floor(Math.random() * timestamp);
 
         // open website
         cy.visit('https://www.demoblaze.com')
@@ -11,7 +11,9 @@ describe('Basic functionality', () => {
         cy.get('#signin2').click()
         
         // Fill in username and password
-        cy.get('#sign-username').type('Testuser' + randomNumber.toString())
+        //cy.get('#sign-username').type('Testuser' + randomNumber.toString())
+        cy.wait(1000)
+        cy.get('#sign-username').type('Testuser' + timestamp.toString())
         cy.get('#sign-password').type('Passwordtest')
 
         // check that text "Sign up successful." appeared 
