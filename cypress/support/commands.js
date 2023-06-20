@@ -23,3 +23,36 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('newUserRegistration', (userName, password) => {
+    // Click on "Sign up"
+    cy.get('#signin2').click()
+    // Fill in username and password
+    cy.get('#signInModal').should('be.visible')
+    cy.get('#sign-username').invoke('val', userName)
+    cy.get('#sign-password').invoke('val', password)
+})
+
+Cypress.Commands.add('addProductToCart', () => {
+    //Click add to cart
+    cy.get('#tbodyid a.btn-success').click()
+
+    // Open Cart
+    cy.get('#cartur').click()
+
+})
+
+Cypress.Commands.add('placeAndPayOrder', () => {
+    // Click "Place Order"
+    cy.get('#page-wrapper button.btn-success').click()
+
+    // Fill in all fields on the page
+    cy.get('#name').type('Testuser')
+    cy.get('#country').type('TestCountry')
+    cy.get('#city').type('Testcity')
+    cy.get('#card').type('1234432198766789')
+    cy.get('#month').type('May')
+    cy.get('#year').type('2023')
+
+    // Click "Purchase" button
+    cy.get('#orderModal button.btn-primary').click()
+})
