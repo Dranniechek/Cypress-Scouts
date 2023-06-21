@@ -8,6 +8,7 @@ describe('Basic functionality', () => {
     })
 
     it('Create new user', () => {
+
         const userName = ('Testuser' + Date.now())
         const password = 'password'
         cy.newUserRegistration(userName, password)
@@ -22,6 +23,7 @@ describe('Basic functionality', () => {
     })
 
     it('Attempt to register an existing user', () => {
+        
         const password = 'password'
         cy.newUserRegistration('Test', password)
         // check that text "This user already exist." appeared 
