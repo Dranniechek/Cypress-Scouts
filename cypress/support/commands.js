@@ -32,19 +32,20 @@ Cypress.Commands.add('newUserRegistration', (userName, password) => {
     cy.get('#sign-password').invoke('val', password)
 })
 
-Cypress.Commands.add('addProductToCart', () => {
+Cypress.Commands.add('addProductToCart', (product) => {
+    cy.contains('.hrefch', product).click()
     //Click add to cart
-    cy.get('#tbodyid a.btn-success').click()
-
-    // Open Cart
-    cy.get('#cartur').click()
-
+    cy.get('#tbodyid a.btn-success').click() 
 })
 
 Cypress.Commands.add('placeAndPayOrder', () => {
+    // Open Cart
+    cy.get('#cartur').click()
+    cy.wait('@viewcart')
+    // check if there is an item in the cart
+    cy.contains('.table', 'Delete').should('be.visible')
     // Click "Place Order"
     cy.get('#page-wrapper button.btn-success').click()
-
     // Fill in all fields on the page
     cy.get('#name').type('Testuser')
     cy.get('#country').type('TestCountry')
@@ -52,7 +53,6 @@ Cypress.Commands.add('placeAndPayOrder', () => {
     cy.get('#card').type('1234432198766789')
     cy.get('#month').type('May')
     cy.get('#year').type('2023')
-
     // Click "Purchase" button
     cy.get('#orderModal button.btn-primary').click()
 })
